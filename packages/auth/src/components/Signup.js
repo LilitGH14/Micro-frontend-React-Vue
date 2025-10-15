@@ -44,7 +44,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
   margin: theme.spacing(3, 0, 2),
 }));
 
-export default function SignUp({ onSignIn }) {
+export default function SignUp({ onSignUp }) {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -118,7 +118,7 @@ export default function SignUp({ onSignIn }) {
             fullWidth
             variant="contained"
             color="primary"
-            onClick={onSignIn}
+            onClick={onSignUp}
           >
             Sign Up
           </SubmitButton>

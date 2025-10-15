@@ -1,9 +1,12 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { createMemoryHistory, createBrowserHistory } from 'history';
-import App from './App';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { createMemoryHistory, createBrowserHistory } from "history";
+import App from "./App";
 
-const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
+const mount = (
+  el,
+  { onSignIn, onSignUp, onNavigate, defaultHistory, initialPath }
+) => {
   const history =
     defaultHistory ||
     createMemoryHistory({
@@ -17,7 +20,9 @@ const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
   }
 
   const root = createRoot(el);
-  root.render(<App onSignIn={onSignIn} history={history} />);
+  root.render(
+    <App onSignIn={onSignIn} onSignUp={onSignUp} history={history} />
+  );
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
@@ -30,8 +35,8 @@ const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
   };
 };
 
-if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_auth-dev-root');
+if (process.env.NODE_ENV === "development") {
+  const devRoot = document.querySelector("#_auth-dev-root");
 
   if (devRoot) {
     mount(devRoot, { defaultHistory: createBrowserHistory() });

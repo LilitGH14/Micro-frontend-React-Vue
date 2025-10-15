@@ -11,6 +11,7 @@ const DashboardLazy = lazy(() => import('./components/DashboardApp'));
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleSignIn = () => {
